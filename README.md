@@ -1,6 +1,6 @@
-# addictedshop
+# DELIDAY APP
 
-Webview application of addictedshop.in
+Webview application of deliday.co.in
 
 ## Getting Started
 
