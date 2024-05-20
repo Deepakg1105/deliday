@@ -24,7 +24,7 @@
     </queries>
 
    <application
-        android:label="Deli Day"
+        android:label="Deliday"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
