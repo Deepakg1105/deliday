@@ -160,6 +160,7 @@ class _WebpageInitialScreenState extends State<WebpageInitialScreen> {
                   navigationDelegate: (NavigationRequest request) async {
                     String urlContains = request.url;
                     print("CLICKED URL: $urlContains");
+                    /// WHATSAPP LINK
                     if (request.url
                         .startsWith('https://api.whatsapp.com/send?phone')) {
                       List<String> urlSplitted =
@@ -178,32 +179,38 @@ class _WebpageInitialScreenState extends State<WebpageInitialScreen> {
                               'WhatsApp'); //This is where Whatsapp launches
                       return NavigationDecision.prevent;
                     }
-                    // if (request.url.contains('mailto:')) {
-                    //   // var _uri = Uri.parse(request.url);//older way
-                    //   var _uri =
-                    //       Uri(scheme: 'mailto', path: 'info@addictedshop.in');
-                    //   await _launchUrl(url: _uri, appName: 'mail app');
-                    //   return NavigationDecision.prevent;
-                    // }
 
+                    /// EMAIL LINK
+                    if (request.url.contains('mailto:')) {
+                      // var _uri = Uri.parse(request.url);//older way
+                      String mail = urlContains.split(':').last;
+                      var _uri =
+                          Uri(scheme: 'mailto', path: mail);
+                      await _launchUrl(url: _uri, appName: 'mail app');
+                      return NavigationDecision.prevent;
+                    }
+
+                    /// DIAL LINK
                     if (request.url.contains('tel:')) {
                       var _uri = Uri.parse(request.url);
                       await _launchUrl(url: _uri, appName: 'dialer');
                       return NavigationDecision.prevent;
                     }
 
+                    /// GOOGLE MAPS LINK
                     //https://goo.gl/maps/UyZSVDJpDbdSJC5C6
-                    if (request.url.contains('https://goo.gl/maps/')) {
-                      var _uri = Uri.parse(request.url);
-                      await _launchUrl(url: _uri, appName: 'url');
-                      return NavigationDecision.prevent;
-                    }
+                    // if (request.url.contains('https://goo.gl/maps/')) {
+                    //   var _uri = Uri.parse(request.url);
+                    //   await _launchUrl(url: _uri, appName: 'url');
+                    //   return NavigationDecision.prevent;
+                    // }
                     // if (request.url.contains('https://www.youtube.com/')) {
                     //   var _uri = Uri.parse(request.url);
                     //   await _launchUrl(url: _uri, appName: 'youtube');
                     //   return NavigationDecision.prevent;
                     // }
 
+                    /// FACEBOOK LINK
                     // if (request.url
                     //     .contains('https://www.facebook.com/ADicTEdSHop/')) {
                     //   //fbProtocolUrl : 'fb://profile/100092280981515?wtsid=wt_0mnGGt9jS12tm60fx';
@@ -217,6 +224,7 @@ class _WebpageInitialScreenState extends State<WebpageInitialScreen> {
                     //   return NavigationDecision.prevent;
                     // }
 
+                    /// INSTA LINK
                     // if (request.url.contains(
                     //     'https://instagram.com/addictedshop007?igshid=NTc4MTIwNjQ2YQ==')) {
                     //   _launchNativeOrWebUrl(
