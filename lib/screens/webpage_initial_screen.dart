@@ -246,14 +246,19 @@ class _WebpageInitialScreenState extends State<WebpageInitialScreen> {
                 ),
               ),
               Container(
-                color: Colors.white,
+                // color: Colors.white,
                 width: internet && progress <= 0.7
                     ? MediaQuery.of(context).size.width
                     : 0.0,
-                child: Lottie.asset(
-                  'assets/lottie/loading.json',
-                  reverse: true,
-                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircularProgressIndicator(color: Colors.blue),
+                    SizedBox(height: 16),
+                    Text('loading...', textAlign: TextAlign.center, style: TextStyle(fontSize: 16),)
+                  ],
+                )
               ),
               Container(
                 width: internet ? 0.0 : MediaQuery.of(context).size.width,
